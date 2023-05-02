@@ -43,6 +43,7 @@ const redDisarmMinusBtnEl = document.getElementById('redDisarmMinusBtn');
 
 const redWinnerBtnEl = document.getElementById('redWinnerBtn');
 const blueWinnerBtnEl = document.getElementById('blueWinnerBtn');
+const drawBtnEl = document.getElementById('drawBtn');
 
 const winnderRound1El = document.getElementById('winnderRound1');
 const winnderRound2El = document.getElementById('winnderRound2');
@@ -55,9 +56,10 @@ const stopTimer = () => {
   }
 }
 
-const startBtnClickElEvent = startBtnEl.addEventListener('click', () => {
+const startBtnClickElEvent = startBtnEl.addEventListener('click', (e) => {
   isTimeRunning = !isTimeRunning;
   startTimer();
+  e.target.blur();
 });
 
 const startTimer = () => {
@@ -76,100 +78,124 @@ const startTimer = () => {
   }
 };
 
-const pauseBtnElClickEvent = pauseBtnEl.addEventListener('click', () => {
+const pauseBtnElClickEvent = pauseBtnEl.addEventListener('click', (e) => {
   isTimeRunning = false;
   stopTimer();
+  e.target.blur();
 });
 
-const resetBtnElClickEvent = resetBtnEl.addEventListener('click', () => {
+const resetBtnElClickEvent = resetBtnEl.addEventListener('click', (e) => {
   resetTimer();
+  e.target.blur();
 });
 
-const nextRoundBtnElClickEvent = nextRoundBtnEl.addEventListener('click', () => {
+const nextRoundBtnElClickEvent = nextRoundBtnEl.addEventListener('click', (e) => {
   resetRound(++round);
+  e.target.blur();
 });
 
-const newMatchBtnElClickEvent = newMatchBtnEl.addEventListener('click', () => {
+const newMatchBtnElClickEvent = newMatchBtnEl.addEventListener('click', (e) => {
   winnerBoard = [];
   resetRound();
+  e.target.blur();
 });
 
-const blueScorePlusBtnElClickEvent = blueScorePlusBtnEl.addEventListener('click', () => {
+const blueScorePlusBtnElClickEvent = blueScorePlusBtnEl.addEventListener('click', (e) => {
   blueScore++;
   displayBlueScore();
+  e.target.blur();
 });
 
-const blueScoreMinusBtnElClickEvent = blueScoreMinusBtnEl.addEventListener('click', () => {
+const blueScoreMinusBtnElClickEvent = blueScoreMinusBtnEl.addEventListener('click', (e) => {
   blueScore--;
   displayBlueScore();
+  e.target.blur();
 });
 
-const blueFoulPlusBtnElClickEvent = blueFoulPlusBtnEl.addEventListener('click', () => {
+const blueFoulPlusBtnElClickEvent = blueFoulPlusBtnEl.addEventListener('click', (e) => {
   blueFoul++;
   handlePenalty(blueFoul, blueDisarm, 'Red')
   displayBlueFoul();
+  e.target.blur();
 });
 
-const blueFoulMinusBtnElClickEvent = blueFoulMinusBtnEl.addEventListener('click', () => {
+const blueFoulMinusBtnElClickEvent = blueFoulMinusBtnEl.addEventListener('click', (e) => {
   blueFoul--;
   handlePenalty(blueFoul, blueDisarm, 'Red')
   displayBlueFoul();
+  e.target.blur();
 });
 
-const blueDisarmPlusBtnElClickEvent = blueDisarmPlusBtnEl.addEventListener('click', () => {
+const blueDisarmPlusBtnElClickEvent = blueDisarmPlusBtnEl.addEventListener('click', (e) => {
   blueDisarm++;
   handlePenalty(blueFoul, blueDisarm, 'Red')
   displayBlueDisarm();
+  e.target.blur();
 });
 
-const blueDisarmMinusBtnElClickEvent = blueDisarmMinusBtnEl.addEventListener('click', () => {
+const blueDisarmMinusBtnElClickEvent = blueDisarmMinusBtnEl.addEventListener('click', (e) => {
   blueDisarm--;
   handlePenalty(blueFoul, blueDisarm, 'Red')
   displayBlueDisarm();
+  e.target.blur();
 });
 
-const redScorePlusBtnElClickEvent = redScorePlusBtnEl.addEventListener('click', () => {
+const redScorePlusBtnElClickEvent = redScorePlusBtnEl.addEventListener('click', (e) => {
   redScore++;
   displayRedScore();
+  e.target.blur();
 });
 
-const redScoreMinusBtnElClickEvent = redScoreMinusBtnEl.addEventListener('click', () => {
+const redScoreMinusBtnElClickEvent = redScoreMinusBtnEl.addEventListener('click', (e) => {
   redScore--;
   displayRedScore();
+  e.target.blur();
 });
 
-const redFoulPlusBtnElClickEvent = redFoulPlusBtnEl.addEventListener('click', () => {
+const redFoulPlusBtnElClickEvent = redFoulPlusBtnEl.addEventListener('click', (e) => {
   redFoul++;
   handlePenalty(redFoul, redDisarm, 'Blue')
   displayRedFoul();
+  e.target.blur();
 });
 
-const redFoulMinusBtnElClickEvent = redFoulMinusBtnEl.addEventListener('click', () => {
+const redFoulMinusBtnElClickEvent = redFoulMinusBtnEl.addEventListener('click', (e) => {
   redFoul--;
   handlePenalty(redFoul, redDisarm, 'Blue')
   displayRedFoul();
+  e.target.blur();
 });
 
-const redDisarmPlusBtnElClickEvent = redDisarmPlusBtnEl.addEventListener('click', () => {
+const redDisarmPlusBtnElClickEvent = redDisarmPlusBtnEl.addEventListener('click', (e) => {
   redDisarm++;
   handlePenalty(redFoul, redDisarm, 'Blue')
   displayRedDisarm();
+  e.target.blur();
 });
 
-const redDisarmMinusBtnElClickEvent = redDisarmMinusBtnEl.addEventListener('click', () => {
+const redDisarmMinusBtnElClickEvent = redDisarmMinusBtnEl.addEventListener('click', (e) => {
   redDisarm--;
   handlePenalty(redFoul, redDisarm, 'Blue')
   displayRedDisarm();
+  e.target.blur();
 });
 
-const redWinnerBtnElClickEvent = redWinnerBtnEl.addEventListener('click', () => {
+const redWinnerBtnElClickEvent = redWinnerBtnEl.addEventListener('click', (e) => {
   winnerBoard[round - 1] = 'Red';
   displayWinnerBoard();
+  e.target.blur();
 });
 
-const blueWinnerBtnElClickEvent = blueWinnerBtnEl.addEventListener('click', () => {
+const blueWinnerBtnElClickEvent = blueWinnerBtnEl.addEventListener('click', (e) => {
   winnerBoard[round - 1] = 'Blue';
   displayWinnerBoard();
+  e.target.blur();
+});
+
+const drawBtnElClickEvent = drawBtnEl.addEventListener('click', (e) => {
+  winnerBoard[round - 1] = 'Draw';
+  displayWinnerBoard();
+  e.target.blur();
 });
 
 const handlePenalty = (foul, disarm, winner) => {
@@ -253,7 +279,7 @@ const windowLoadEvent = window.addEventListener('load', () => {
   display();
 });
 
-const spacePressEvent = document.addEventListener('keypress', (e) => {
+const spacePressEvent = window.addEventListener('keypress', (e) => {
   if (e.code !== 'Space') {
   	return;
   }
