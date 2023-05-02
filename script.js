@@ -57,7 +57,10 @@ const stopTimer = () => {
 
 const startBtnClickElEvent = startBtnEl.addEventListener('click', () => {
   isTimeRunning = !isTimeRunning;
+  startTimer();
+});
 
+const startTimer = () => {
   stopTimer();
 
   if (isTimeRunning) {
@@ -71,7 +74,7 @@ const startBtnClickElEvent = startBtnEl.addEventListener('click', () => {
       displayTimer();
     }, 1000);
   }
-});
+};
 
 const pauseBtnElClickEvent = pauseBtnEl.addEventListener('click', () => {
   isTimeRunning = false;
@@ -103,21 +106,25 @@ const blueScoreMinusBtnElClickEvent = blueScoreMinusBtnEl.addEventListener('clic
 
 const blueFoulPlusBtnElClickEvent = blueFoulPlusBtnEl.addEventListener('click', () => {
   blueFoul++;
+  handlePenalty(blueFoul, blueDisarm, 'Red')
   displayBlueFoul();
 });
 
 const blueFoulMinusBtnElClickEvent = blueFoulMinusBtnEl.addEventListener('click', () => {
   blueFoul--;
+  handlePenalty(blueFoul, blueDisarm, 'Red')
   displayBlueFoul();
 });
 
 const blueDisarmPlusBtnElClickEvent = blueDisarmPlusBtnEl.addEventListener('click', () => {
   blueDisarm++;
+  handlePenalty(blueFoul, blueDisarm, 'Red')
   displayBlueDisarm();
 });
 
 const blueDisarmMinusBtnElClickEvent = blueDisarmMinusBtnEl.addEventListener('click', () => {
   blueDisarm--;
+  handlePenalty(blueFoul, blueDisarm, 'Red')
   displayBlueDisarm();
 });
 
@@ -133,21 +140,25 @@ const redScoreMinusBtnElClickEvent = redScoreMinusBtnEl.addEventListener('click'
 
 const redFoulPlusBtnElClickEvent = redFoulPlusBtnEl.addEventListener('click', () => {
   redFoul++;
+  handlePenalty(redFoul, redDisarm, 'Blue')
   displayRedFoul();
 });
 
 const redFoulMinusBtnElClickEvent = redFoulMinusBtnEl.addEventListener('click', () => {
   redFoul--;
+  handlePenalty(redFoul, redDisarm, 'Blue')
   displayRedFoul();
 });
 
 const redDisarmPlusBtnElClickEvent = redDisarmPlusBtnEl.addEventListener('click', () => {
   redDisarm++;
+  handlePenalty(redFoul, redDisarm, 'Blue')
   displayRedDisarm();
 });
 
 const redDisarmMinusBtnElClickEvent = redDisarmMinusBtnEl.addEventListener('click', () => {
   redDisarm--;
+  handlePenalty(redFoul, redDisarm, 'Blue')
   displayRedDisarm();
 });
 
@@ -160,6 +171,14 @@ const blueWinnerBtnElClickEvent = blueWinnerBtnEl.addEventListener('click', () =
   winnerBoard[round - 1] = 'Blue';
   displayWinnerBoard();
 });
+
+const handlePenalty = (foul, disarm, winner) => {
+  if (foul === 3 && disarm === 2) {
+    winnerBoard[round - 1] = winner;
+    displayWinnerBoard();
+    stopTimer();
+  }
+}
 
 const resetTimer = () => {
   isTimeRunning = false;
@@ -232,4 +251,14 @@ const display = () => {
 
 const windowLoadEvent = window.addEventListener('load', () => {
   display();
+});
+
+const spacePressEvent = document.addEventListener('keypress', (e) => {
+  if (e.code !== 'Space') {
+  	return;
+  }
+
+  isTimeRunning = !isTimeRunning;
+
+  isTimeRunning ? startTimer() : stopTimer();
 });
