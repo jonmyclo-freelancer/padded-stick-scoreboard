@@ -108,8 +108,8 @@ const nextRoundBtnElClickEvent = Array.from(nextRoundBtnEl).forEach(el => {
   
     resetRound(++round);
 
-    blueContainerEl.classList.remove('blue-first-point');
-    redContainerEl.classList.remove('red-first-point');
+    blueContainerEl.classList.remove('first-point-indicator');
+    redContainerEl.classList.remove('first-point-indicator');
     e.target.blur();
   });
 })
@@ -126,8 +126,8 @@ const newMatchBtnElClickEvent = Array.from(newMatchBtnEl).forEach(el => {
   
     winnerBoard = [];
     resetRound();
-    blueContainerEl.classList.remove('blue-first-point');
-    redContainerEl.classList.remove('red-first-point');
+    blueContainerEl.classList.remove('first-point-indicator');
+    redContainerEl.classList.remove('first-point-indicator');
     e.target.blur();
   });
 })
@@ -138,7 +138,7 @@ const blueScorePlusBtnElClickEvent = Array.from(blueScorePlusBtnEl).forEach((el,
       return;
     }
     if (blueScore === 0 && i === 1) {
-      blueContainerEl.classList.add('blue-first-point')
+      blueContainerEl.classList.add('first-point-indicator')
     }
     blueScore++;
     displayBlueScore();
@@ -186,7 +186,7 @@ const redScorePlusBtnElClickEvent = Array.from(redScorePlusBtnEl).forEach((el, i
       return;
     }
     if (redScore === 0 && i === 1) {
-      redContainerEl.classList.add('red-first-point')
+      redContainerEl.classList.add('first-point-indicator')
     }
     redScore++;
     displayRedScore();

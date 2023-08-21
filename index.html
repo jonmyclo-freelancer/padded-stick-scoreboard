@@ -13,11 +13,7 @@
     body {
       height: 100%;
     }
-    .blue-first-point {
-      outline: 10px solid #ffc107;
-      outline-offset: -20px;
-    }
-    .red-first-point::before {
+    .first-point-indicator::before {
       position: absolute;
       top: 50px;
       right: 50px;
@@ -33,7 +29,7 @@
 <body>
   <main class="row h-100 w-100">
     <section class="col-md-4 bg-primary">
-      <div id="blueContainer" class="d-flex flex-column h-100 justify-content-center">
+      <div id="blueContainer" class="d-flex flex-column h-100 justify-content-center position-relative">
         <div class="w-50 mx-auto mb-5">
           <h1 id="blueScore" class="display-1 text-center mb-5 lh-1" style="font-size: 20rem;"></h1>
           <div class="d-flex justify-content-between">
