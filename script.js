@@ -13,6 +13,9 @@ let redDisarm = 0;
 
 let winnerBoard = [];
 
+const blueContainerEl = document.getElementById('blueContainer');
+const redContainerEl = document.getElementById('redContainer');
+
 const roundEl = document.getElementById('round');
 const timerEl = document.getElementById('timer');
 const startBtnEl = document.getElementById('startBtn');
@@ -22,7 +25,7 @@ const nextRoundBtnEl = document.getElementsByClassName('nextRoundBtn');
 const newMatchBtnEl = document.getElementsByClassName('newMatchBtn');
 
 const blueScoreEl = document.getElementById('blueScore');
-const blueScorePlusBtnEl = document.getElementById('blueScorePlusBtn');
+const blueScorePlusBtnEl = document.getElementsByClassName('blueScorePlusBtn');
 const blueScoreMinusBtnEl = document.getElementById('blueScoreMinusBtn');
 const blueFoulEl = document.getElementById('blueFoul');
 const blueFoulPlusBtnEl = document.getElementById('blueFoulPlusBtn');
@@ -32,7 +35,7 @@ const blueDisarmPlusBtnEl = document.getElementById('blueDisarmPlusBtn');
 const blueDisarmMinusBtnEl = document.getElementById('blueDisarmMinusBtn');
 
 const redScoreEl = document.getElementById('redScore');
-const redScorePlusBtnEl = document.getElementById('redScorePlusBtn');
+const redScorePlusBtnEl = document.getElementsByClassName('redScorePlusBtn');
 const redScoreMinusBtnEl = document.getElementById('redScoreMinusBtn');
 const redFoulEl = document.getElementById('redFoul');
 const redFoulPlusBtnEl = document.getElementById('redFoulPlusBtn');
@@ -104,6 +107,9 @@ const nextRoundBtnElClickEvent = Array.from(nextRoundBtnEl).forEach(el => {
     }
   
     resetRound(++round);
+
+    blueContainerEl.classList.remove('blue-first-point');
+    redContainerEl.classList.remove('red-first-point');
     e.target.blur();
   });
 })
@@ -120,15 +126,25 @@ const newMatchBtnElClickEvent = Array.from(newMatchBtnEl).forEach(el => {
   
     winnerBoard = [];
     resetRound();
+    blueContainerEl.classList.remove('blue-first-point');
+    redContainerEl.classList.remove('red-first-point');
     e.target.blur();
   });
 })
 
-const blueScorePlusBtnElClickEvent = blueScorePlusBtnEl.addEventListener('click', (e) => {
-  blueScore++;
-  displayBlueScore();
-  e.target.blur();
-});
+const blueScorePlusBtnElClickEvent = Array.from(blueScorePlusBtnEl).forEach((el, i) => {
+  el.addEventListener('click', (e) => {
+    if (blueScore > 0 && i === 1) {
+      return;
+    }
+    if (blueScore === 0 && i === 1) {
+      blueContainerEl.classList.add('blue-first-point')
+    }
+    blueScore++;
+    displayBlueScore();
+    e.target.blur();
+  });
+})
 
 const blueScoreMinusBtnElClickEvent = blueScoreMinusBtnEl.addEventListener('click', (e) => {
   blueScore--;
@@ -164,11 +180,19 @@ const blueDisarmMinusBtnElClickEvent = blueDisarmMinusBtnEl.addEventListener('cl
   e.target.blur();
 });
 
-const redScorePlusBtnElClickEvent = redScorePlusBtnEl.addEventListener('click', (e) => {
-  redScore++;
-  displayRedScore();
-  e.target.blur();
-});
+const redScorePlusBtnElClickEvent = Array.from(redScorePlusBtnEl).forEach((el, i) => {
+  el.addEventListener('click', (e) => {
+    if (redScore > 0 && i === 1) {
+      return;
+    }
+    if (redScore === 0 && i === 1) {
+      redContainerEl.classList.add('red-first-point')
+    }
+    redScore++;
+    displayRedScore();
+    e.target.blur();
+  });
+})
 
 const redScoreMinusBtnElClickEvent = redScoreMinusBtnEl.addEventListener('click', (e) => {
   redScore--;
