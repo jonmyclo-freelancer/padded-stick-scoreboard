@@ -18,8 +18,8 @@ const timerEl = document.getElementById('timer');
 const startBtnEl = document.getElementById('startBtn');
 const pauseBtnEl = document.getElementById('pauseBtn');
 const resetBtnEl = document.getElementById('resetBtn');
-const nextRoundBtnEl = document.getElementById('nextRoundBtn');
-const newMatchBtnEl = document.getElementById('newMatchBtn');
+const nextRoundBtnEl = document.getElementsByClassName('nextRoundBtn');
+const newMatchBtnEl = document.getElementsByClassName('newMatchBtn');
 
 const blueScoreEl = document.getElementById('blueScore');
 const blueScorePlusBtnEl = document.getElementById('blueScorePlusBtn');
@@ -48,6 +48,9 @@ const drawBtnEl = document.getElementById('drawBtn');
 const winnderRound1El = document.getElementById('winnderRound1');
 const winnderRound2El = document.getElementById('winnderRound2');
 const winnderRound3El = document.getElementById('winnderRound3');
+
+const winnerModalHeaderEl = document.getElementById('winnerModalHeader');
+const winnerModalTextEl = document.getElementById('winnerModalText');
 
 const stopTimer = () => {
   if (timer) {
@@ -89,16 +92,37 @@ const resetBtnElClickEvent = resetBtnEl.addEventListener('click', (e) => {
   e.target.blur();
 });
 
-const nextRoundBtnElClickEvent = nextRoundBtnEl.addEventListener('click', (e) => {
-  resetRound(++round);
-  e.target.blur();
-});
+const nextRoundBtnElClickEvent = Array.from(nextRoundBtnEl).forEach(el => {
+  el.addEventListener('click', (e) => {
+    if (round >= 3) {
+      return;
+    }
+  
+    if (!winnerBoard[round - 1]) {
+      alert('Please declare a winner!');
+      return;
+    }
+  
+    resetRound(++round);
+    e.target.blur();
+  });
+})
 
-const newMatchBtnElClickEvent = newMatchBtnEl.addEventListener('click', (e) => {
-  winnerBoard = [];
-  resetRound();
-  e.target.blur();
-});
+
+
+const newMatchBtnElClickEvent = Array.from(newMatchBtnEl).forEach(el => {
+  el.addEventListener('click', (e) => {
+    if (winnerBoard.length !== 3) {
+      if (!confirm('There is no declared winner. Do you want a new match?')) {
+        return;
+      }
+    }
+  
+    winnerBoard = [];
+    resetRound();
+    e.target.blur();
+  });
+})
 
 const blueScorePlusBtnElClickEvent = blueScorePlusBtnEl.addEventListener('click', (e) => {
   blueScore++;
@@ -181,19 +205,40 @@ const redDisarmMinusBtnElClickEvent = redDisarmMinusBtnEl.addEventListener('clic
 });
 
 const redWinnerBtnElClickEvent = redWinnerBtnEl.addEventListener('click', (e) => {
-  winnerBoard[round - 1] = 'Red';
+  winnerBoard[round - 1] = {
+    text: 'Red',
+    class: 'bg-danger',
+  };
+  winnerModalTextEl.textContent = 'Red';
+  winnerModalTextEl.classList.remove(...['bg-primary', 'bg-secondary']);
+  winnerModalTextEl.classList.add('bg-danger');
+  winnerModalHeaderEl.classList.remove('d-none');
   displayWinnerBoard();
   e.target.blur();
 });
 
 const blueWinnerBtnElClickEvent = blueWinnerBtnEl.addEventListener('click', (e) => {
-  winnerBoard[round - 1] = 'Blue';
+  winnerBoard[round - 1] = {
+    text: 'Blue',
+    class: 'bg-primary',
+  };
+  winnerModalTextEl.textContent = 'Blue';
+  winnerModalTextEl.classList.remove(...['bg-danger', 'bg-secondary']);
+  winnerModalTextEl.classList.add('bg-primary');
+  winnerModalHeaderEl.classList.remove('d-none');
   displayWinnerBoard();
   e.target.blur();
 });
 
 const drawBtnElClickEvent = drawBtnEl.addEventListener('click', (e) => {
-  winnerBoard[round - 1] = 'Draw';
+  winnerBoard[round - 1] = {
+    text: 'Draw',
+    class: 'bg-secondary',
+  };
+  winnerModalTextEl.textContent = 'Draw';
+  winnerModalTextEl.classList.remove(...['bg-danger', 'bg-primary']);
+  winnerModalTextEl.classList.add('bg-secondary');
+  winnerModalHeaderEl.classList.add('d-none');
   displayWinnerBoard();
   e.target.blur();
 });
@@ -258,9 +303,31 @@ const displayRedDisarm = () => {
 }
 
 const displayWinnerBoard = () => {
-  winnderRound1El.textContent = winnerBoard[0] || 'N/A';
-  winnderRound2El.textContent = winnerBoard[1] || 'N/A';
-  winnderRound3El.textContent = winnerBoard[2] || 'N/A';
+  const [w1, w2, w3] = winnerBoard;
+
+  winnderRound1El.textContent = '';
+  winnderRound1El.classList.remove(...winnderRound1El.classList);
+  winnderRound2El.textContent = '';
+  winnderRound2El.classList.remove(...winnderRound2El.classList);
+  winnderRound3El.textContent = '';
+  winnderRound3El.classList.remove(...winnderRound3El.classList);
+
+  if (w1) {
+    winnderRound1El.textContent = w1.text;
+    winnderRound1El.classList.add(...['badge', w1.class]);
+  }
+
+  if (w2) {
+    winnderRound2El.textContent = w2.text;
+    winnderRound2El.classList.remove(...winnderRound2El.classList);
+    winnderRound2El.classList.add(...['badge', w2.class]);
+  }
+
+  if (w3) {
+    winnderRound3El.textContent = w3.text;
+    winnderRound3El.classList.remove(...winnderRound3El.classList);
+    winnderRound3El.classList.add(...['badge', w3.class]);
+  }
 }
 
 const display = () => {
