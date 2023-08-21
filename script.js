@@ -351,6 +351,8 @@ const spacePressEvent = window.addEventListener('keypress', (e) => {
   	return;
   }
 
+  e.preventDefault();
+
   isTimeRunning = !isTimeRunning;
 
   isTimeRunning ? startTimer() : stopTimer();
