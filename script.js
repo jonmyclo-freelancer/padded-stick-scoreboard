@@ -115,9 +115,6 @@ const nextRoundBtnElClickEvent = Array.from(nextRoundBtnEl).forEach(el => {
   
     resetRound(++round);
 
-    blueContainerEl.classList.remove('first-point-indicator');
-    redContainerEl.classList.remove('first-point-indicator');
-
     e.target.blur();
   });
 })
@@ -322,6 +319,10 @@ const resetRound = (newRound = 1) => {
   redScore = 0;
   redFoul = 0;
   redDisarm = 0;
+  blueContainerEl.classList.remove('first-point-indicator');
+  redContainerEl.classList.remove('first-point-indicator');
+  Array.from(blueScorePlusBtnEl)[1].textContent = 'First Point';
+  Array.from(redScorePlusBtnEl)[1].textContent = 'First Point'
   resetTimer();
   display();
 }
@@ -387,26 +388,14 @@ const displayWinnerBoard = () => {
 }
 
 const displayScores = () => {
-  if (!scores.length) {
-    return;
-  }
-
   const [, r1, r2, r3] = scores;
 
-  if (r1) {
-    document.getElementById('blueScoreR1').textContent = r1.blue;
-    document.getElementById('redScoreR1').textContent = r1.red;
-  }
-
-  if (r2) {
-    document.getElementById('blueScoreR2').textContent = r2.blue;
-    document.getElementById('redScoreR2').textContent = r2.red;
-  }
-
-  if (r3) {
-    document.getElementById('blueScoreR3').textContent = r3.blue;
-    document.getElementById('redScoreR3').textContent = r3.red;
-  }
+  document.getElementById('blueScoreR1').textContent = typeof r1.blue === 'number' ? r1.blue : '';
+  document.getElementById('redScoreR1').textContent = typeof r1.red === 'number' ? r1.red : '';
+  document.getElementById('blueScoreR2').textContent = typeof r2.blue === 'number' ? r2.blue : '';
+  document.getElementById('redScoreR2').textContent = typeof r2.red === 'number' ? r2.red : '';
+  document.getElementById('blueScoreR3').textContent = typeof r3.blue === 'number' ? r3.blue : '';
+  document.getElementById('redScoreR3').textContent = typeof r3.red === 'number' ? r3.red : '';
 };
 
 const display = () => {
