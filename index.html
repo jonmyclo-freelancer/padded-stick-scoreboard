@@ -30,19 +30,19 @@
   <main class="row h-100 w-100">
     <section class="col-md-4 bg-primary">
       <div id="blueContainer" class="d-flex flex-column h-100 justify-content-center position-relative">
-        <div class="w-50 mx-auto mb-5">
-          <h1 id="blueScore" class="display-1 text-center mb-5 lh-1" style="font-size: 20rem;"></h1>
-          <div class="d-flex justify-content-between">
+        <div class="mx-auto mb-5">
+          <h1 id="blueScore" class="display-1 text-center mb-5 lh-1 fw-bold text-light" style="font-size: 15rem;"></h1>
+          <div class="d-flex justify-content-between gap-2">
             <button type="button" class="blueScorePlusBtn btn btn-dark">+ 1</button>
             <button type="button" class="blueScorePlusBtn btn btn-warning">First Point</button>
             <button id="blueScoreMinusBtn" type="button" class="btn btn-dark">- 1</button>
           </div>
         </div>
 
-        <div class="row pt-5 px-5">
+        <div class="row pt-5 px-5 text-light">
           <div class="col-md-5 text-center">
             <strong>Fouls</strong>
-            <h1 id="blueFoul" class="display-1 mb-5"></h1>
+            <h1 id="blueFoul" class="display-1 mb-5 fw-bold"></h1>
             <div class="d-flex justify-content-between">
               <button id="blueFoulPlusBtn" type="button" class="btn btn-dark">+ 1</button>
               <button id="blueFoulMinusBtn" type="button" class="btn btn-dark">- 1</button>
@@ -51,7 +51,7 @@
 
           <div class="offset-md-2 col-md-5 text-center">
             <strong>Disarm</strong>
-            <h1 id="blueDisarm" class="display-1 mb-5"></h1>
+            <h1 id="blueDisarm" class="display-1 mb-5 fw-bold"></h1>
             <div class="d-flex justify-content-between">
               <button id="blueDisarmPlusBtn" type="button" class="btn btn-dark">+ 1</button>
               <button id="blueDisarmMinusBtn" type="button" class="btn btn-dark">- 1</button>
@@ -70,14 +70,17 @@
             <div class="col-md-4">
               <h3 class="display-6 fw-bold">R1</h3>
               <h1><span id="winnderRound1" class="badge"></span></h1>
+              <strong id="blueScoreR1"></strong> - <strong id="redScoreR1"></strong>
             </div>
             <div class="col-md-4">
               <h3 class="display-6 fw-bold">R2</h3>
               <h1><span id="winnderRound2" class="badge"></span></h1>
+              <strong id="blueScoreR2"></strong> - <strong id="redScoreR2"></strong>
             </div>
             <div class="col-md-4">
               <h3 class="display-6 fw-bold">R3</h3>
               <h1><span id="winnderRound3" class="badge"></span></h1>
+              <strong id="blueScoreR3"></strong> - <strong id="redScoreR3"></strong>
             </div>
           </div>
         </div>
@@ -98,14 +101,6 @@
           </div>
         </div>
 
-        <div class="mb-3">
-          <button type="button" class="nextRoundBtn btn btn-primary btn-lg w-100">Next Round</button>
-        </div>
-
-        <div class="mb-5">
-          <button type="button" class="newMatchBtn btn btn-success btn-lg w-100">New Match</button>
-        </div>
-
         <div class="mb-5">
           <h1 class="display-6 text-center">WINNER</h1>
           <div class="btn-group w-100" role="group">
@@ -119,19 +114,19 @@
 
     <section class="col-md-4 bg-danger">
       <div id="redContainer" class="d-flex flex-column h-100 justify-content-center position-relative">
-        <div class="w-50 mx-auto mb-5">
-          <h1 id="redScore" class="display-1 text-center mb-5 lh-1" style="font-size: 20rem;"></h1>
-          <div class="d-flex justify-content-between">
+        <div class="mx-auto mb-5">
+          <h1 id="redScore" class="display-1 text-center mb-5 lh-1 fw-bold text-light" style="font-size: 15rem;"></h1>
+          <div class="d-flex gap-2 justify-content-between">
             <button type="button" class="redScorePlusBtn btn btn-dark">+ 1</button>
             <button type="button" class="redScorePlusBtn btn btn-warning">First Point</button>
             <button id="redScoreMinusBtn" type="button" class="btn btn-dark">- 1</button>
           </div>
         </div>
 
-        <div class="row pt-5 px-5">
+        <div class="row pt-5 px-5 text-light">
           <div class="col-md-5 text-center">
             <strong>Fouls</strong>
-            <h1 id="redFoul" class="display-1 mb-5"></h1>
+            <h1 id="redFoul" class="display-1 mb-5 fw-bold"></h1>
             <div class="d-flex justify-content-between">
               <button id="redFoulPlusBtn" type="button" class="btn btn-dark">+ 1</button>
               <button id="redFoulMinusBtn" type="button" class="btn btn-dark">- 1</button>
@@ -140,7 +135,7 @@
 
           <div class="offset-md-2 col-md-5 text-center">
             <strong>Disarm</strong>
-            <h1 id="redDisarm" class="display-1 mb-5"></h1>
+            <h1 id="redDisarm" class="display-1 mb-5 fw-bold"></h1>
             <div class="d-flex justify-content-between">
               <button id="redDisarmPlusBtn" type="button" class="btn btn-dark">+ 1</button>
               <button id="redDisarmMinusBtn" type="button" class="btn btn-dark">- 1</button>

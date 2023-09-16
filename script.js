@@ -12,6 +12,7 @@ let redFoul = 0;
 let redDisarm = 0;
 
 let winnerBoard = [];
+let scores = [];
 
 const blueContainerEl = document.getElementById('blueContainer');
 const redContainerEl = document.getElementById('redContainer');
@@ -97,7 +98,13 @@ const resetBtnElClickEvent = resetBtnEl.addEventListener('click', (e) => {
 
 const nextRoundBtnElClickEvent = Array.from(nextRoundBtnEl).forEach(el => {
   el.addEventListener('click', (e) => {
+    scores[round] = {
+      blue: blueScore,
+      red: redScore,
+    }
+    
     if (round >= 3) {
+      displayScores();
       return;
     }
   
@@ -110,6 +117,7 @@ const nextRoundBtnElClickEvent = Array.from(nextRoundBtnEl).forEach(el => {
 
     blueContainerEl.classList.remove('first-point-indicator');
     redContainerEl.classList.remove('first-point-indicator');
+
     e.target.blur();
   });
 })
@@ -125,6 +133,7 @@ const newMatchBtnElClickEvent = Array.from(newMatchBtnEl).forEach(el => {
     }
   
     winnerBoard = [];
+    scores = [];
     resetRound();
     blueContainerEl.classList.remove('first-point-indicator');
     redContainerEl.classList.remove('first-point-indicator');
@@ -134,19 +143,30 @@ const newMatchBtnElClickEvent = Array.from(newMatchBtnEl).forEach(el => {
 
 const blueScorePlusBtnElClickEvent = Array.from(blueScorePlusBtnEl).forEach((el, i) => {
   el.addEventListener('click', (e) => {
-    if (blueScore > 0 && i === 1) {
-      return;
+    if (i === 0) {
+      blueScore++;
     }
-    if (blueScore === 0 && i === 1) {
-      blueContainerEl.classList.add('first-point-indicator')
+
+    if (i === 1) {
+      if (blueContainerEl.classList.contains('first-point-indicator') && blueScore > 0) {
+        blueContainerEl.classList.remove('first-point-indicator');
+        el.textContent = 'First Point';
+        blueScore--;
+      } else {
+        blueContainerEl.classList.add('first-point-indicator');
+        el.textContent = 'Remove First Point';
+        blueScore++;
+      }
     }
-    blueScore++;
     displayBlueScore();
     e.target.blur();
   });
 })
 
 const blueScoreMinusBtnElClickEvent = blueScoreMinusBtnEl.addEventListener('click', (e) => {
+  if (blueScore === 0) {
+    return;
+  }
   blueScore--;
   displayBlueScore();
   e.target.blur();
@@ -182,19 +202,31 @@ const blueDisarmMinusBtnElClickEvent = blueDisarmMinusBtnEl.addEventListener('cl
 
 const redScorePlusBtnElClickEvent = Array.from(redScorePlusBtnEl).forEach((el, i) => {
   el.addEventListener('click', (e) => {
-    if (redScore > 0 && i === 1) {
-      return;
+    if (i === 0) {
+      redScore++;
     }
-    if (redScore === 0 && i === 1) {
-      redContainerEl.classList.add('first-point-indicator')
+
+    if (i === 1) {
+      if (redContainerEl.classList.contains('first-point-indicator') && redScore > 0) {
+        redContainerEl.classList.remove('first-point-indicator');
+        el.textContent = 'First Point';
+        redScore--;
+      } else {
+        redContainerEl.classList.add('first-point-indicator');
+        el.textContent = 'Remove First Point';
+        redScore++;
+      }
     }
-    redScore++;
     displayRedScore();
     e.target.blur();
   });
 })
 
 const redScoreMinusBtnElClickEvent = redScoreMinusBtnEl.addEventListener('click', (e) => {
+  if (redScore === 0) {
+    return;
+  }
+
   redScore--;
   displayRedScore();
   e.target.blur();
@@ -354,6 +386,29 @@ const displayWinnerBoard = () => {
   }
 }
 
+const displayScores = () => {
+  if (!scores.length) {
+    return;
+  }
+
+  const [, r1, r2, r3] = scores;
+
+  if (r1) {
+    document.getElementById('blueScoreR1').textContent = r1.blue;
+    document.getElementById('redScoreR1').textContent = r1.red;
+  }
+
+  if (r2) {
+    document.getElementById('blueScoreR2').textContent = r2.blue;
+    document.getElementById('redScoreR2').textContent = r2.red;
+  }
+
+  if (r3) {
+    document.getElementById('blueScoreR3').textContent = r3.blue;
+    document.getElementById('redScoreR3').textContent = r3.red;
+  }
+};
+
 const display = () => {
   displayRound();
   displayTimer();
@@ -364,6 +419,7 @@ const display = () => {
   displayRedFoul();
   displayRedDisarm();
   displayWinnerBoard();
+  displayScores();
 }
 
 const windowLoadEvent = window.addEventListener('load', () => {
