@@ -390,12 +390,12 @@ const displayWinnerBoard = () => {
 const displayScores = () => {
   const [, r1, r2, r3] = scores;
 
-  document.getElementById('blueScoreR1').textContent = typeof r1.blue === 'number' ? r1.blue : '';
-  document.getElementById('redScoreR1').textContent = typeof r1.red === 'number' ? r1.red : '';
-  document.getElementById('blueScoreR2').textContent = typeof r2.blue === 'number' ? r2.blue : '';
-  document.getElementById('redScoreR2').textContent = typeof r2.red === 'number' ? r2.red : '';
-  document.getElementById('blueScoreR3').textContent = typeof r3.blue === 'number' ? r3.blue : '';
-  document.getElementById('redScoreR3').textContent = typeof r3.red === 'number' ? r3.red : '';
+  document.getElementById('blueScoreR1').textContent = r1 ? r1.blue : '';
+  document.getElementById('redScoreR1').textContent = r1 ? r1.red : '';
+  document.getElementById('blueScoreR2').textContent = r2 ? r2.blue : '';
+  document.getElementById('redScoreR2').textContent = r2 ? r2.red : '';
+  document.getElementById('blueScoreR3').textContent = r3 ? r3.blue : '';
+  document.getElementById('redScoreR3').textContent = r3 ? r3.red : '';
 };
 
 const display = () => {
