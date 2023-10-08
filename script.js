@@ -53,7 +53,6 @@ const winnderRound1El = document.getElementById('winnderRound1');
 const winnderRound2El = document.getElementById('winnderRound2');
 const winnderRound3El = document.getElementById('winnderRound3');
 
-const winnerModalHeaderEl = document.getElementById('winnerModalHeader');
 const winnerModalTextEl = document.getElementById('winnerModalText');
 
 const stopTimer = () => {
@@ -280,7 +279,6 @@ const redWinnerBtnElClickEvent = redWinnerBtnEl.addEventListener('click', (e) =>
   winnerModalTextEl.textContent = 'Red';
   winnerModalTextEl.classList.remove(...['bg-primary', 'bg-secondary']);
   winnerModalTextEl.classList.add('bg-danger');
-  winnerModalHeaderEl.classList.remove('d-none');
   displayWinnerBoard();
   e.target.blur();
 });
@@ -293,7 +291,6 @@ const blueWinnerBtnElClickEvent = blueWinnerBtnEl.addEventListener('click', (e) 
   winnerModalTextEl.textContent = 'Blue';
   winnerModalTextEl.classList.remove(...['bg-danger', 'bg-secondary']);
   winnerModalTextEl.classList.add('bg-primary');
-  winnerModalHeaderEl.classList.remove('d-none');
   displayWinnerBoard();
   e.target.blur();
 });
@@ -306,7 +303,6 @@ const drawBtnElClickEvent = drawBtnEl.addEventListener('click', (e) => {
   winnerModalTextEl.textContent = 'Draw';
   winnerModalTextEl.classList.remove(...['bg-danger', 'bg-primary']);
   winnerModalTextEl.classList.add('bg-secondary');
-  winnerModalHeaderEl.classList.add('d-none');
   displayWinnerBoard();
   e.target.blur();
 });
