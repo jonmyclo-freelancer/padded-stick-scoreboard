@@ -27,7 +27,7 @@
 </head>
 
 <body>
-  <main class="row h-100 w-100 m-0">
+  <main class="h-100 w-100">
     <section class="d-flex p-0 border" style="height: 100px">
       <img src="https://placehold.co/600x400" class="img-fluid">
       <h1 class="flex-grow-1 d-flex align-items-center justify-content-center m-0 p-2 text-center" style="font-size: 1.5vw;">
@@ -36,122 +36,124 @@
       <img src="https://placehold.co/600x400" class="img-fluid">
     </section>
 
-    <section class="col-md-4 bg-primary">
-      <div id="blueContainer" class="d-flex flex-column h-100 justify-content-center position-relative">
-        <div class="mx-auto mb-5">
-          <h1 id="blueScore" class="display-1 text-center mb-5 lh-1 fw-bold text-light" style="font-size: 20rem;"></h1>
-          <div class="d-flex justify-content-between gap-2">
-            <button type="button" class="blueScorePlusBtn btn btn-dark">+ 1</button>
-            <button type="button" class="blueScorePlusBtn btn btn-warning">First Point</button>
-            <button id="blueScoreMinusBtn" type="button" class="btn btn-dark">- 1</button>
-          </div>
-        </div>
-
-        <div class="row pt-5 px-5 text-light">
-          <div class="col-md-5 text-center">
-            <strong>Fouls</strong>
-            <h1 id="blueFoul" class="display-1 mb-5 fw-bold"></h1>
-            <div class="d-flex justify-content-between">
-              <button id="blueFoulPlusBtn" type="button" class="btn btn-dark">+ 1</button>
-              <button id="blueFoulMinusBtn" type="button" class="btn btn-dark">- 1</button>
+    <div class="row">
+      <section class="col-4 bg-primary">
+        <div id="blueContainer" class="d-flex flex-column h-100 justify-content-center position-relative">
+          <div class="mx-auto mb-5">
+            <h1 id="blueScore" class="display-1 text-center mb-5 lh-1 fw-bold text-light" style="font-size: 20rem;"></h1>
+            <div class="d-flex justify-content-between gap-2">
+              <button type="button" class="blueScorePlusBtn btn btn-dark">+ 1</button>
+              <button type="button" class="blueScorePlusBtn btn btn-warning">First Point</button>
+              <button id="blueScoreMinusBtn" type="button" class="btn btn-dark">- 1</button>
             </div>
           </div>
-
-          <div class="offset-md-2 col-md-5 text-center">
-            <strong>Disarm</strong>
-            <h1 id="blueDisarm" class="display-1 mb-5 fw-bold"></h1>
-            <div class="d-flex justify-content-between">
-              <button id="blueDisarmPlusBtn" type="button" class="btn btn-dark">+ 1</button>
-              <button id="blueDisarmMinusBtn" type="button" class="btn btn-dark">- 1</button>
+  
+          <div class="row pt-5 px-5 text-light">
+            <div class="col-md-5 text-center">
+              <strong>Fouls</strong>
+              <h1 id="blueFoul" class="display-1 mb-5 fw-bold"></h1>
+              <div class="d-flex justify-content-between">
+                <button id="blueFoulPlusBtn" type="button" class="btn btn-dark">+ 1</button>
+                <button id="blueFoulMinusBtn" type="button" class="btn btn-dark">- 1</button>
+              </div>
             </div>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <section class="col-md-4">
-      <div class="d-flex flex-column h-100">
-        <div class="mb-2 mt-2 pb-2 bg-light border rounded text-center">
-          <h6 class="fw-bold">Winner Board</h6>
-
-          <div class="d-flex">
-            <div class="col-md-4">
-              <h3 class="fw-bold">R1</h3>
-              <h1><span id="winnderRound1" class="badge"></span></h1>
-              <strong id="blueScoreR1"></strong> - <strong id="redScoreR1"></strong>
-            </div>
-            <div class="col-md-4">
-              <h3 class="fw-bold">R2</h3>
-              <h1><span id="winnderRound2" class="badge"></span></h1>
-              <strong id="blueScoreR2"></strong> - <strong id="redScoreR2"></strong>
-            </div>
-            <div class="col-md-4">
-              <h3 class="fw-bold">R3</h3>
-              <h1><span id="winnderRound3" class="badge"></span></h1>
-              <strong id="blueScoreR3"></strong> - <strong id="redScoreR3"></strong>
+  
+            <div class="offset-md-2 col-md-5 text-center">
+              <strong>Disarm</strong>
+              <h1 id="blueDisarm" class="display-1 mb-5 fw-bold"></h1>
+              <div class="d-flex justify-content-between">
+                <button id="blueDisarmPlusBtn" type="button" class="btn btn-dark">+ 1</button>
+                <button id="blueDisarmMinusBtn" type="button" class="btn btn-dark">- 1</button>
+              </div>
             </div>
           </div>
         </div>
-
-        <div class="mb-2 bg-light border rounded text-center">
-          <span class="lead">Round</span>
-          <br>
-          <h1 id="round" class="display-1 fw-bolder" style="font-size: 7rem;"></h1>
-        </div>
-
-        <div class="mb-2 pb-2 bg-light border rounded text-center">
-          <span id="timer" class="display-1 fw-bold" style="font-size: 5rem;"></span>
-          <br>
-          <div class="btn-group" role="group">
-            <button id="startBtn" type="button" class="btn btn-dark">Start</button>
-            <button id="pauseBtn" type="button" class="btn btn-dark">Pause</button>
-            <button id="resetBtn" type="button" class="btn btn-dark">Reset</button>
-          </div>
-        </div>
-
-        <div class="mb-5">
-          <h1 class="display-6 text-center">WINNER</h1>
-          <div class="btn-group w-100" role="group">
-            <button id="blueWinnerBtn" type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#winnerModal">Blue</button>
-            <button id="drawBtn" type="button" class="btn btn-secondary" data-bs-toggle="modal" data-bs-target="#winnerModal">Draw</button>
-            <button id="redWinnerBtn" type="button" class="btn btn-danger" data-bs-toggle="modal" data-bs-target="#winnerModal">Red</button>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <section class="col-md-4 bg-danger">
-      <div id="redContainer" class="d-flex flex-column h-100 justify-content-center position-relative">
-        <div class="mx-auto mb-5">
-          <h1 id="redScore" class="display-1 text-center mb-5 lh-1 fw-bold text-light" style="font-size: 20rem;"></h1>
-          <div class="d-flex gap-2 justify-content-between">
-            <button type="button" class="redScorePlusBtn btn btn-dark">+ 1</button>
-            <button type="button" class="redScorePlusBtn btn btn-warning">First Point</button>
-            <button id="redScoreMinusBtn" type="button" class="btn btn-dark">- 1</button>
-          </div>
-        </div>
-
-        <div class="row pt-5 px-5 text-light">
-          <div class="col-md-5 text-center">
-            <strong>Fouls</strong>
-            <h1 id="redFoul" class="display-1 mb-5 fw-bold"></h1>
-            <div class="d-flex justify-content-between">
-              <button id="redFoulPlusBtn" type="button" class="btn btn-dark">+ 1</button>
-              <button id="redFoulMinusBtn" type="button" class="btn btn-dark">- 1</button>
+      </section>
+  
+      <section class="col-4">
+        <div class="d-flex flex-column h-100">
+          <div class="mb-2 mt-2 pb-2 bg-light border rounded text-center">
+            <h6 class="fw-bold">Winner Board</h6>
+  
+            <div class="d-flex">
+              <div class="col-md-4">
+                <h3 class="fw-bold">R1</h3>
+                <h1><span id="winnderRound1" class="badge"></span></h1>
+                <strong id="blueScoreR1"></strong> - <strong id="redScoreR1"></strong>
+              </div>
+              <div class="col-md-4">
+                <h3 class="fw-bold">R2</h3>
+                <h1><span id="winnderRound2" class="badge"></span></h1>
+                <strong id="blueScoreR2"></strong> - <strong id="redScoreR2"></strong>
+              </div>
+              <div class="col-md-4">
+                <h3 class="fw-bold">R3</h3>
+                <h1><span id="winnderRound3" class="badge"></span></h1>
+                <strong id="blueScoreR3"></strong> - <strong id="redScoreR3"></strong>
+              </div>
             </div>
           </div>
-
-          <div class="offset-md-2 col-md-5 text-center">
-            <strong>Disarm</strong>
-            <h1 id="redDisarm" class="display-1 mb-5 fw-bold"></h1>
-            <div class="d-flex justify-content-between">
-              <button id="redDisarmPlusBtn" type="button" class="btn btn-dark">+ 1</button>
-              <button id="redDisarmMinusBtn" type="button" class="btn btn-dark">- 1</button>
+  
+          <div class="mb-2 bg-light border rounded text-center">
+            <span class="lead">Round</span>
+            <br>
+            <h1 id="round" class="display-1 fw-bolder" style="font-size: 7rem;"></h1>
+          </div>
+  
+          <div class="mb-2 pb-2 bg-light border rounded text-center">
+            <span id="timer" class="display-1 fw-bold" style="font-size: 5rem;"></span>
+            <br>
+            <div class="btn-group" role="group">
+              <button id="startBtn" type="button" class="btn btn-dark">Start</button>
+              <button id="pauseBtn" type="button" class="btn btn-dark">Pause</button>
+              <button id="resetBtn" type="button" class="btn btn-dark">Reset</button>
+            </div>
+          </div>
+  
+          <div class="mb-5">
+            <h1 class="display-6 text-center">WINNER</h1>
+            <div class="btn-group w-100" role="group">
+              <button id="blueWinnerBtn" type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#winnerModal">Blue</button>
+              <button id="drawBtn" type="button" class="btn btn-secondary" data-bs-toggle="modal" data-bs-target="#winnerModal">Draw</button>
+              <button id="redWinnerBtn" type="button" class="btn btn-danger" data-bs-toggle="modal" data-bs-target="#winnerModal">Red</button>
             </div>
           </div>
         </div>
-      </div>
-    </section>
+      </section>
+  
+      <section class="col-4 bg-danger">
+        <div id="redContainer" class="d-flex flex-column h-100 justify-content-center position-relative">
+          <div class="mx-auto mb-5">
+            <h1 id="redScore" class="display-1 text-center mb-5 lh-1 fw-bold text-light" style="font-size: 20rem;"></h1>
+            <div class="d-flex gap-2 justify-content-between">
+              <button type="button" class="redScorePlusBtn btn btn-dark">+ 1</button>
+              <button type="button" class="redScorePlusBtn btn btn-warning">First Point</button>
+              <button id="redScoreMinusBtn" type="button" class="btn btn-dark">- 1</button>
+            </div>
+          </div>
+  
+          <div class="row pt-5 px-5 text-light">
+            <div class="col-md-5 text-center">
+              <strong>Fouls</strong>
+              <h1 id="redFoul" class="display-1 mb-5 fw-bold"></h1>
+              <div class="d-flex justify-content-between">
+                <button id="redFoulPlusBtn" type="button" class="btn btn-dark">+ 1</button>
+                <button id="redFoulMinusBtn" type="button" class="btn btn-dark">- 1</button>
+              </div>
+            </div>
+  
+            <div class="offset-md-2 col-md-5 text-center">
+              <strong>Disarm</strong>
+              <h1 id="redDisarm" class="display-1 mb-5 fw-bold"></h1>
+              <div class="d-flex justify-content-between">
+                <button id="redDisarmPlusBtn" type="button" class="btn btn-dark">+ 1</button>
+                <button id="redDisarmMinusBtn" type="button" class="btn btn-dark">- 1</button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+    </div>
 
     <!-- Winner Modal -->
     <div class="modal fade" id="winnerModal" tabindex="-1" aria-hidden="true">
