@@ -57,10 +57,25 @@ const winnerModalHeaderEl = document.getElementById('winnerModalHeader');
 const winnerModalTextEl = document.getElementById('winnerModalText');
 
 const stopTimer = () => {
-  if (timer) {
-    clearInterval(timer);
-    timer = null;
+  toggleTimerBackground();
+
+  if (!timer) {
+    return;
   }
+
+  clearInterval(timer);
+  timer = null;
+}
+
+const toggleTimerBackground = () => {
+  if (timeInSeconds === 60 || isTimeRunning) {
+    timerEl.parentElement.classList.remove('bg-warning');
+    timerEl.parentElement.classList.add('bg-light');
+    return;
+  }
+
+  timerEl.parentElement.classList.remove('bg-light');
+  timerEl.parentElement.classList.add('bg-warning');
 }
 
 const startBtnClickElEvent = startBtnEl.addEventListener('click', (e) => {

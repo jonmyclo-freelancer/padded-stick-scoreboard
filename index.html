@@ -27,7 +27,15 @@
 </head>
 
 <body>
-  <main class="row h-100 w-100">
+  <main class="row h-100 w-100 m-0">
+    <section class="d-flex p-0 border" style="height: 100px">
+      <img src="https://placehold.co/600x400" class="img-fluid">
+      <h1 class="flex-grow-1 d-flex align-items-center justify-content-center m-0 p-2 text-center" style="font-size: 1.5vw;">
+        Tournament Name
+      </h1>
+      <img src="https://placehold.co/600x400" class="img-fluid">
+    </section>
+
     <section class="col-md-4 bg-primary">
       <div id="blueContainer" class="d-flex flex-column h-100 justify-content-center position-relative">
         <div class="mx-auto mb-5">
@@ -154,9 +162,13 @@
 
             <h1 id="winnerModalText" class="text-center text-white" style="font-size: 10rem;"></h1>
           </div>
-          <div class="modal-footer justify-content-around">
-            <button type="button" class="nextRoundBtn btn btn-primary btn-lg" data-bs-dismiss="modal">Next Round</button>
-            <button type="button" class="newMatchBtn btn btn-success btn-lg" data-bs-dismiss="modal">New Match</button>
+          <div class="modal-footer justify-content-between">
+            <button type="button" class="newMatchBtn btn btn-lg" data-bs-dismiss="modal">Cancel</button>
+
+            <div>
+              <button type="button" class="nextRoundBtn btn btn-primary btn-lg" data-bs-dismiss="modal">Next Round</button>
+              <button type="button" class="newMatchBtn btn btn-success btn-lg" data-bs-dismiss="modal">New Match</button>
+            </div>
           </div>
         </div>
       </div>
